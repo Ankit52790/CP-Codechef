@@ -1,0 +1,59 @@
+/* package codechef; // don't place package name! */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+/* Name of the class has to be "Main" only if the class is public. */
+class Codechef
+{
+	public static void main (String[] args) throws java.lang.Exception
+	{
+		Scanner read = new Scanner(System.in);
+		int t = read.nextInt();
+		for(int i=0; i<t; i++){
+		    int n = read.nextInt();
+		    String s = read.next();
+		    char[] c = s.toCharArray(); // original array or given array
+		    // here out of every two indexes first index element stored into second index and vice versa.
+		    if(n%2==1){ // if the length of string is odd
+		        for(int j=0; j<n-1; j=j+2){
+		            char temp = c[j];
+		            c[j] = c[j+1];
+		            c[j+1] = temp;
+		        }   // would be the changed array or updated array
+		    }
+		    else{ // if the length of string is even
+		        for(int j=0; j<n; j=j+2){
+		            char temp = c[j];
+		            c[j] = c[j+1];
+		            c[j+1] = temp;
+		        }   // would be the changed array or updated array
+		    }
+		    int[] x = new int[26];  // this array is for the given string characters ascii
+		    int[] y = new int[26];  // this array is for the updated string characters ascii
+		    int[][] z = new int[26][2];  // this 2-d array is storing both the arrays for making operations easy
+		    for(int j=0; j<26; j++){    // have ascii values from a to z
+		        x[j] = j + 97;
+		    }
+		    for(int j=0; j<26; j++){    // have ascii values from z to a
+		        y[j] = x[25 - j];
+		    }
+		    for(int j=0; j<26; j++){    // first index of 2-d array have ascii values from a to z and second index of 2-d array have ascii values from a to z
+		        z[j][0] = x[j]; // first index of 2-d array
+		        z[j][1] = y[j]; // first index of 2-d array
+		    }
+		    String res = "";    // empty string for futher task
+		    for(int j=0; j<n; j++){
+		        int p = (int)c[j];
+		        for(int k=0; k<26; k++){
+		            if(p == z[k][0]){
+		                c[j] = (char)z[k][1];
+        		        res = res + c[j];   // after conversion each character array element consecutively get appended into the string
+		            }
+		        }
+		    }
+		    System.out.println(res);
+		}
+	}
+}
