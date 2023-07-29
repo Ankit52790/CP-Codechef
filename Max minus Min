@@ -1,0 +1,27 @@
+// Update the '_' in the code below to solve the problem
+import java.util.Scanner;
+
+class Codechef
+{
+	public static void main (String[] args)
+	{
+		Scanner read = new Scanner(System.in);
+		
+		int t = read.nextInt();
+		for(int i=0; i<t; i++)  
+		{
+    		int a = read.nextInt();
+    		int b = read.nextInt();
+    		int c = read.nextInt();
+    		
+    		int maximum = Math.max(a, Math.max(b, c));
+    		int minimum = Math.min(a, Math.min(b, c));
+    		
+    		int difference = maximum - minimum;
+    		{
+    		    System.out.println(difference);
+    		}
+    		
+		}
+	}
+}
